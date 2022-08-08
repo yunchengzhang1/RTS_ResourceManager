@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include "Node.h"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    cout<< "RTS Resource Manager"<<endl;
     return 0;
 }
