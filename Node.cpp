@@ -12,6 +12,7 @@ Node::Node(string it){
 }
 Node::Node(string it, string resource){
     item = it;
+    INSERT_Link(resource);
     usable = true;
 }
 
@@ -21,35 +22,49 @@ Node& Node::operator=(const Node& rhs){
     usable = rhs.usable;
     return *this;
 }
-//create INSERT_Node as a main function
-//create DELETE_Node as a main function
+
 
 //add a new related resource
 void Node::INSERT_Link(string resource){
-
+    if (SEARCH_Link(resource) == 0){
+        Node tempNode(resource);
+        //use emplace to avoid copy of obj
+        resources.emplace(resource, tempNode);
+    }
 }
 //look for a related resource
 bool Node::SEARCH_Link(string resource){
-
+    auto it = resources.find(resource);
+    if (it == resources.end()){
+        return 0; //not found
+    }
+    else{
+        return 1; //found
+    }
 }
 //search, then delete a related resource
 bool Node::DELETE_Link(string resource){
-
+    resources.erase(resource);
 }
 
 string Node::get_item(){
-
+    return item;
 }
 vector<string> Node::get_resources(){
-
+    auto itr = resources.begin();
+    vector<string> result;
+    for (itr; itr != resources.end(); itr++){
+        result.push_back(itr->first);
+    }
+    return result;
 }
 bool Node::get_usable(){
-
+    return usable;
 }
 
-void Node::set_item(string item){
-
+void Node::set_item(string it){
+    item = it;
 }
 void Node::set_usable(bool u){
-
+    usable = u;
 }

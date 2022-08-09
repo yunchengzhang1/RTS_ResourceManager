@@ -17,7 +17,7 @@ private:
     string item;
     // it relies on the resource
     // map that contains the resource/dependency node
-    map<string, Node> *resources = new map<string, Node>;
+    map<string, Node> resources;
     // is it usable or not
     bool usable;
 
@@ -43,7 +43,7 @@ public:
     vector<string> get_resources();
     bool get_usable();
 
-    void set_item(string item);
+    void set_item(string it);
     void set_usable(bool u);
 
 
