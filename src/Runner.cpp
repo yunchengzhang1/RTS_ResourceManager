@@ -162,12 +162,11 @@ void Runner::output_file(){
     string filename;
     cout<<"type in the filename you would prefer: ";
     cin>> filename;
-    cout<<".txt";
     string oname = filename + ".txt";
     ofile.open(oname);
     auto nodes_itr = nodes.begin();
     for (nodes_itr; nodes_itr != nodes.end(); nodes_itr++){
-        ofile<<nodes_itr->first<<" -> ";
+        ofile<<nodes_itr->first<<" ";
         vector<string> resources = nodes_itr->second.get_resources();
         for (int i=0; i<resources.size(); i++){
             ofile<<resources[i]<<" ";

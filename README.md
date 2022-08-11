@@ -7,7 +7,8 @@
 
 ### To Run the Program:
 * Configuration: CMake Application
-* Before running with an input file, place the file in the "cmake-build-debug" folder. 
+* Before running with an input file, place the file in the project directory. 
 * One command line argument needed when running: [name and type of the input file] 
   * example: resource.txt
+* To output/input file, set working directory to the directory of this project, example: C:\Users\UserA\RTS_ResourceManager
 
