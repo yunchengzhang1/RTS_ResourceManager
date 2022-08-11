@@ -42,6 +42,7 @@ public:
     string get_item();
     vector<string> get_resources();
     bool get_usable();
+    int get_resources_size();
 
     void set_item(string it);
     void set_usable(bool u);

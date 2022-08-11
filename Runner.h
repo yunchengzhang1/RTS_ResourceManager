@@ -11,6 +11,7 @@
 class Runner {
 private:
     map<string, Node> nodes;
+    bool alive;
 public:
     void Run(string file);
 
@@ -19,9 +20,16 @@ public:
     //create DELETE_Node as a main function
     bool DELETE_Node(string item);
 
-    //Terminal UI function
+    bool stay_alive();
 
+
+
+    //Terminal UI function
+    void display_nodes();
+    bool insert_query();
+    bool delete_query();
     //file output
+    void output_file();
 
 };
 
