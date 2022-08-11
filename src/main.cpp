@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 //    cout<<test_node1.get_item()<<endl;
     Runner manager;
     manager.Run(argv[1]);
-    cout<<"end"<<endl;
+    cout<<"Exiting RTS Resource Manager, Thank You for Using!"<<endl;
 
     return 0;
 }

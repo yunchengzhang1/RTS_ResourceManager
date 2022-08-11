@@ -12,3 +12,10 @@
   * example: resource.txt
 * To output/input file, set working directory to the directory of this project, example: C:\Users\UserA\RTS_ResourceManager
 
+### To Use the Commands:
+* INSERT: inserting nodes and links with this format -> "item resource"
+  * To insert a link, input node that you want as the "item", and whatever it links to as the "resource"
+* REMOVE: input in the exact format: "turret bullets"
+* DISPLAY: print the current nodes to terminal
+* OUTPUT: output the current nodes to a file
+* QUIT: exit the program
