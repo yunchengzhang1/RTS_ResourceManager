@@ -7,11 +7,11 @@
 
 void Runner::Run(string file_name){
     //if there is file in, do file in
-    cout<<"start running "<<file_name<<endl;
+    std::cout<<"start running "<<file_name<<std::endl;
     ifstream inFile;
     inFile.open(file_name);
     if (inFile.is_open()){//if file is open, read in nodes to map
-        cout<<"file "<< file_name <<" found, converting data to nodes..." <<endl;
+        std::cout<<"file "<< file_name <<" found, converting data to nodes..." <<std::endl;
         string item, resource;
         while(inFile >> item >> resource){
             // insert read-in nodes
@@ -19,18 +19,18 @@ void Runner::Run(string file_name){
         }
     }
     else{//if file is not open, ask user if continue the program
-        cout<<"file not found, would you still like to continue with the program? Y/N"<<endl;
+        std::cout<<"file not found, would you still like to continue with the program? Y/N"<<std::endl;
         alive = stay_alive();
     }
 
     while (alive){
         //entering user interface: select from command
-        cout<<"Please select from the following commands (one letter):"<<endl<<
-        "I[INSERT]   R[REMOVE]   D[DISPLAY]   O[OUTPUT]   Q[QUIT]"<<endl<<"> ";
+        std::cout<<"Please select from the following commands (one letter):"<<std::endl<<
+        "I[INSERT]   R[REMOVE]   D[DISPLAY]   O[OUTPUT]   Q[QUIT]"<<std::endl<<"> ";
         char input;
-        cin>> input;
+        std::cin>> input;
         input = tolower(input);
-        cout<<input<<endl;
+        std::cout<<input<<std::endl;
         switch(input) {
             case 'i':         //INSERT NODE
                 insert_query();
@@ -62,7 +62,7 @@ bool Runner::INSERT_Node(string item, string resource){
             bool found_resource = itr->second.SEARCH_Link(resource);
             //if true, print "this is a duplicate
             if (found_resource){
-                cout<<"duplicated Node, resource already exists!"<<endl;
+                std::cout<<"duplicated Node, resource already exists!"<<std::endl;
             }
             //else false, Node add a new resource: INSERT_Link
             else{
@@ -100,7 +100,7 @@ bool Runner::DELETE_Node(string item){
 
 bool Runner:: stay_alive(){
     char yn;
-    cin>> yn;
+    std::cin>> yn;
     yn = tolower(yn);
     switch(yn) {
         case 'y':
@@ -113,25 +113,25 @@ bool Runner:: stay_alive(){
 void Runner::display_nodes(){
     auto nodes_itr = nodes.begin();
     for (nodes_itr; nodes_itr != nodes.end(); nodes_itr++){
-        cout<<nodes_itr->first<<" -> ";
+        std::cout<<nodes_itr->first<<" -> ";
         vector<string> resources = nodes_itr->second.get_resources();
         for (int i=0; i<resources.size(); i++){
-            cout<<resources[i]<<" ";
+            std::cout<<resources[i]<<" ";
         }
-        cout<<endl;
+        std::cout<<std::endl;
     }
 }
 bool Runner::insert_query(){
     string item, resource;
-    cout<< "Type in your ITEM and RESOURCE in such order: \"turret bullets\""<<endl<<">";
-    cin >> item >> resource;
+    std::cout<< "Type in your ITEM and RESOURCE in such order: \"turret bullets\""<<std::endl<<">";
+    std::cin >> item >> resource;
     while (true){
         if (item != "" && resource !=""){
             return INSERT_Node(item, resource);
         }
         else{
-            cout<<"please input in the exact format: \"turret bullets\""<<endl;
-            cout<<"would you still like to continue with INSERT? Y/N"<<endl;
+            std::cout<<"please input in the exact format: \"turret bullets\""<<std::endl;
+            std::cout<<"would you still like to continue with INSERT? Y/N"<<std::endl;
             bool yn = stay_alive();
             if (!yn){// if yn is false, return false and exit out INSERT
                 return yn;
@@ -141,15 +141,15 @@ bool Runner::insert_query(){
 }
 bool Runner::delete_query(){
     string item;
-    cout<< "Type in the item you wish to delete: "<<endl<<">";
-    cin >> item;
+    std::cout<< "Type in the item you wish to delete: "<<std::endl<<">";
+    std::cin >> item;
     while (true){
         bool delete_success = DELETE_Node(item);
         if (delete_success == true){
             return true;
         }
         else{
-            cout<<"keyword/item not found, would you still like to continue with DELETE? Y/N"<<endl;
+            std::cout<<"keyword/item not found, would you still like to continue with DELETE? Y/N"<<std::endl;
             bool yn = stay_alive();
             if (!yn){// if yn is false, return false and exit out DELETE
                 return yn;
@@ -158,10 +158,10 @@ bool Runner::delete_query(){
     }
 }
 void Runner::output_file(){
-    ofstream ofile;
+    std::ofstream ofile;
     string filename;
-    cout<<"type in the filename you would prefer: ";
-    cin>> filename;
+    std::cout<<"type in the filename you would prefer: ";
+    std::cin>> filename;
     string oname = filename + ".txt";
     ofile.open(oname);
     auto nodes_itr = nodes.begin();
@@ -171,6 +171,6 @@ void Runner::output_file(){
         for (int i=0; i<resources.size(); i++){
             ofile<<resources[i]<<" ";
         }
-        ofile<<endl;
+        ofile<<std::endl;
     }
 }

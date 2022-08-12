@@ -9,7 +9,9 @@
 #include <vector>
 #include <map>
 
-using namespace std;
+using std::string;
+using std::map;
+using std::vector;
 
 class Node {
 private:

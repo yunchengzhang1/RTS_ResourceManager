@@ -6,7 +6,8 @@
 #include "Node.h"
 #ifndef RTS_RESOURCEMANAGER_RUNNER_H
 #define RTS_RESOURCEMANAGER_RUNNER_H
-
+using std::iostream;
+using std::ifstream;
 
 class Runner {
 private:
